@@ -30,10 +30,17 @@ version = "2020.2"
 project {
 
     buildType(Build)
+
+    template(AnotherOne)
 }
 
 object Build : BuildType({
+    templates(AnotherOne)
     name = "Build"
+})
+
+object AnotherOne : Template({
+    name = "another one"
 
     artifactRules = "target/*.jar"
 
@@ -43,17 +50,20 @@ object Build : BuildType({
 
     steps {
         maven {
+            id = "RUNNER_1"
             goals = "clean package"
             runnerArgs = "-Dmaven.test.failure.ignore=true"
         }
         script {
             name = "search dir"
+            id = "RUNNER_2"
             scriptContent = "ls -lah target/"
         }
     }
 
     triggers {
         vcs {
+            id = "TRIGGER_1"
         }
     }
 })
