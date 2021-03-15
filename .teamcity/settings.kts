@@ -48,7 +48,7 @@ object Build : BuildType({
         }
         script {
             name = "search dir"
-            scriptContent = "ls -lah"
+            scriptContent = "ls -lah target/"
         }
     }
 
