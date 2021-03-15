@@ -8,6 +8,6 @@ public class Welcomer{
 		return "Farewell, good hunter. May you find your worth in waking world.";
 	}
 	public String sayWhat() {
-		return "What?";
+		return "What?What?";
 	}
 }
